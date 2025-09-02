@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Love Page</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  text-align: center;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  position: relative;
+}
+
+/* Container para corações */
+#hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* permite clicar em botões normalmente */
+  z-index: 9999;
+}
+
+/* Seções */
+.section {
+  display: none;
+  width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+.active {
+  display: block;
+}
+
+/* Página 1 */
+.container {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  max-width: 700px;
+  margin: 50px auto;
+}
+h1 { color: #ff4f81; font-size: 36px; margin-bottom: 10px; }
+p { font-size: 20px; color: #444; }
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 18px;
+  color: white;
+  background: #ff4f81;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn:hover { background: #e03a6f; transform: scale(1.05); }
+
+/* Página 2 */
+.slideshow-container {
+  position: relative;
+  max-width: 700px;
+  margin: 30px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.slide { display: none; }
+.slide img { width: 100%; border-radius: 20px; display: block; }
+.textinho { 
+  font-size: 20px; 
+  margin: 20px auto; 
+  max-width: 700px; 
+  padding: 0 15px; 
+  color: #444; 
+  text-align: justify; 
+}
+
+/* Corações */
+.heart {
+  position: absolute;
+  color: #ff4f81;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Container para corações -->
+<div id="hearts-container"></div>
+
+<!-- Página 1 -->
+<section id="page1" class="section active">
+  <div class="container">
+    <h1>💖 Oi, Gabriel! 💖</h1>
+    <p>Fiz essa página só pra te lembrar<br>o quanto você é especial pra mim!</p>
+    <p style="margin-top:15px;">De: Nicolas 💕</p>
+    <button class="btn" onclick="goToPage2()">Clique aqui 💌</button>
+  </div>
+</section>
+
+<!-- Página 2 -->
+<section id="page2" class="section">
+  <h1>💖 Casal de Mamãe Oxum 💖</h1>
+
+  <div class="slideshow-container">
+    <div class="slide"><img src="foto1.jpeg" alt="Foto 1"></div>
+    <div class="slide"><img src="foto2.jpeg" alt="Foto 2"></div>
+    <div class="slide"><img src="foto3.jpeg" alt="Foto 3"></div>
+  </div>
+
+  <p class="textinho">
+    Amor, eu nem sei por onde começar pra dizer o quanto eu te amo e sou grato por ter você na minha vida. 
+    Te amo muiiitooo, de verdade, muito messsmo kkk. Você não é só alguém especial, você é raro, daqueles que chegam e transformam tudo: os dias ruins ficam mais leves e os dias bons viram lembranças que eu nunca vou esquecer. Estar contigo me dá uma paz que não encontro em mais lugar nenhum, como se você fosse meu ponto de equilíbrio em meio a tanta correria e bagunça da vida.
+    <br><br>
+    O que eu mais admiro em você é como consegue me acolher do jeitinho que eu sou, sem julgamentos, sem máscaras. Você me escuta, me entende e até me enxerga quando nem eu sei me explicar direito. Seu carinho, atenção e jeitinho de me tratar me fazem sentir valorizado e amado de verdade.
+    <br><br>
+    Obrigado por cada detalhe: pelas palavras certas, pelos sorrisos espontâneos, pelos conselhos, pela paciência e até pelas brincadeiras que parecem simples, mas que mudam completamente o meu dia. Sei que a vida nem sempre é fácil, mas ter você do meu lado torna tudo mais leve e bonito.
+    <br><br>
+    Te conhecer foi um presente que vou guardar pra sempre. Você é uma das maiores certezas que já tive e uma das coisas mais lindas que já me aconteceu. Não importa o que venha pela frente, só quero que saiba que vou estar sempre aqui, e o que eu sinto por você não depende de momento, distância ou dificuldade.
+    <br><br>
+    Obrigado por ser exatamente quem você é: incrível, verdadeiro e essencial na minha vida. Te amo muiiitooo, amor, e quero caminhar contigo, hoje e sempre. 💛
+  </p>
+
+  <audio autoplay loop>
+    <source src="pelo-tempo-que-durar.mp3" type="audio/mp3">
+    Seu navegador não suporta áudio.
+  </audio>
+</section>
+
+<script>
+// Corações flutuando dentro do container
+function createHeart() {
+  const container = document.getElementById('hearts-container');
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.top = window.innerHeight + "px";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  container.appendChild(heart);
+  setTimeout(() => { heart.remove(); }, 5000);
+}
+setInterval(createHeart, 300);
+
+// Navegação
+function goToPage2() {
+  document.getElementById("page1").classList.remove("active");
+  document.getElementById("page2").classList.add("active");
+  document.body.style.background = "linear-gradient(135deg, #ffdde1, #ee9ca7)";
+  slideIndex = 0;
+  showSlides();
+}
+
+// Slideshow
+let slideIndex = 0;
+let slideTimer;
+function showSlides() {
+  let slides = document.getElementsByClassName("slide");
+  for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1; }
+  slides[slideIndex-1].style.display = "block";
+  clearTimeout(slideTimer);
+  slideTimer = setTimeout(showSlides, 3000);
+}
+</script>
+</body>
+</html>
